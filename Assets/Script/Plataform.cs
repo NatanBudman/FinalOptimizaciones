@@ -16,8 +16,8 @@ public class Plataform : MonoBehaviour
    public void PlataformMove(bool isCanMoveLeft, bool isCanMoveRight) 
     {
         if (Input.GetKey(KeyCode.A) && isCanMoveLeft)
-            transform.Translate(Vector2.left * currSpeed * Time.deltaTime);
+            transform.Translate(Vector2.up * currSpeed * Time.deltaTime);
         else if (Input.GetKey(KeyCode.D) && isCanMoveRight)
-            transform.Translate(Vector2.right * currSpeed * Time.deltaTime);
+            transform.Translate(Vector2.down * currSpeed * Time.deltaTime);
     }
 }

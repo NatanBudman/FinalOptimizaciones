@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2963,7 +2963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf9688c5d4589d64090bde5c0a9379e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.41
+      value: -8.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cf9688c5d4589d64090bde5c0a9379e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4155,7 +4155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c24519ab6b0ed44bbae87db00a9134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plataform: {fileID: 0}
+  plataform: {fileID: 1954853049}
   ball: {fileID: 1022782279}
   bola: {fileID: 1022782283}
   StartHeightDetectedColliders: 28
