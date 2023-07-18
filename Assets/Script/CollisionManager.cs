@@ -18,7 +18,7 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
     public float rangeIterationCollision;
     bool isCollisionWhithPlataform = false;
-
+    bool isStart = false;
     private void Walls() 
     {
         // Rebota si no esta en la plataforma
@@ -66,8 +66,6 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                 ball.RandomBounce("Down");
                 ball.transform.SetParent(null);
                 return;
-
-
             }
         }
     }
@@ -110,7 +108,28 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
         return false;
     }
+    public bool OnCheckCollision(GameObject _selft, GameObject other, float _SelfScaleX,float _SelftSacaleY, float _OtherScaleX, float _OtherSacaleY)
+    {
 
+        float _selftLowPosx = _selft.transform.position.x - (_SelfScaleX * 0.5f);
+        float _selftMuchPosX = _selft.transform.position.x + (_SelfScaleX * 0.5f);
+        float _OthertLowPosx = other.transform.position.x - (_OtherScaleX * 0.5f);
+        float _OtherMuchPosX = other.transform.position.x + (_OtherScaleX * 0.5f);
+
+        float _selftLowPosY = _selft.transform.position.y - (_SelftSacaleY * 0.5f);
+        float _selftMuchPosY = _selft.transform.position.y + (_SelftSacaleY * 0.5f);
+        float _OthertLowPosY = other.transform.position.y - (_OtherSacaleY * 0.5f);
+        float _OtherMuchPosY = other.transform.position.y + (_OtherSacaleY * 0.5f);
+
+        if (_selftLowPosx <= _OthertLowPosx + _OtherScaleX  && _selftMuchPosX >= _OthertLowPosx &&
+        _selftLowPosY <= _OthertLowPosY + _OtherSacaleY && _selftMuchPosY >= _OthertLowPosY)
+        {
+            return true;
+        }
+
+        return false;
+    }
+ 
     private void AddCollision(GameObject add) 
     {
         if (!Collisions.Contains(add))
@@ -130,17 +149,22 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
     public void Op_UpdateGameplay()
     {
+
         ball.Move();
+
         // Chequea collisiones cuando pasa determinado valor Y
         if (ball.transform.position.y >= rangeIterationCollision)
         {
             List<GameObject> copyColls = new List<GameObject>(Collisions);
             foreach (var coll in copyColls)
             {
-                if (OnCheckCollision(bola.gameObject, coll))
-                {
-                    Objetives obj = coll.GetComponent<Objetives>();
+                Objetives obj = coll.GetComponent<Objetives>();
 
+                if (OnCheckCollision(bola.gameObject, obj.gameObject,ball.ScaleX,ball.ScaleY, obj.ScaleX, obj.ScaleY))
+                {
+                    
+
+                    // Si es mayor a la y del padre pica para arriba
                     if (ball.transform.position.y > coll.transform.parent.position.y)
                         ball.BallJump();
                     else
@@ -165,28 +189,28 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
             copyColls = Collisions;
         }
 
-        if (ball.transform.position.y < plataform.transform.position.y + 1)
+
+
+        if (OnCheckCollision(bola.gameObject, plataform.gameObject,ball.ScaleX,ball.ScaleY,plataform.ScaleX,plataform.ScaleY))
         {
-            if (OnCheckCollision(bola.gameObject, plataform.gameObject))
+            Debug.Log("entre");
+
+            isCollisionWhithPlataform = true;
+            ball.transform.SetParent(plataform.transform);
+
+            if (Input.GetKey(KeyCode.Space))
             {
-
-                isCollisionWhithPlataform = true;
-                ball.transform.SetParent(plataform.transform);
-
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    ball.transform.SetParent(null);
-                    isCollisionWhithPlataform = false;
-                    ball.RandomBounce("Up");
-                }
-                else
-                {
-                    ball.StopBall();
-                }
+                ball.transform.SetParent(null);
+                isCollisionWhithPlataform = false;
+                ball.RandomBounce("Up");
             }
+            else
+            {
+                ball.StopBall();
+            }
+
+
         }
-
-
 
         Plataform();
         Walls();
