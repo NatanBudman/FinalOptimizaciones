@@ -7,6 +7,20 @@ public class Objetives : MonoBehaviour
     public int life;
     public GameObject[] Neighboards;
 
+    int rayLength = 12;
+
+    List<GameObject> n ;
+ 
+    void Raycast(Vector3 start,Vector3 direction)
+    {
+        RaycastHit hit;
+        Physics.Raycast(start, direction, out hit, rayLength);
+
+        if (hit.collider != null)
+        {
+            n.Add(hit.collider.gameObject);
+        }
+    }
     public void DestroyedObjetive() 
     {
         life--;
