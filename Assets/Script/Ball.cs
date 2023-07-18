@@ -9,9 +9,14 @@ public class Ball : MonoBehaviour
     private float Velocity;
     public float DireccionX;
     private float _dirX;
+
+    [Header("Scale")]
+    public float ScaleY;
+    public float ScaleX;
     private void Start()
     {
         _dirX = DireccionX;
+        StopBall();
     }
     public void Move() 
     {
