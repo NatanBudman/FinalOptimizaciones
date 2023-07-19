@@ -53,7 +53,7 @@ public class UpdateManager : MonoBehaviour
 
             foreach (var updateGameplay in updatesCopy)
             {
-                if (updateGameplay != null)
+                if (updateGameplay != null && updateGameplay.gameObject.activeInHierarchy == true)
                 {
                     updateGameplay.UpdateGameplay();
                 }

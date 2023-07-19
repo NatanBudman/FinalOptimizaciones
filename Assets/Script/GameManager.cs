@@ -7,15 +7,16 @@ public class GameManager : MonoBehaviour, IOptimizatedUpdate
     private bool isPause = false;
 
     public Canvas _Canvas;
+    public void Start()
+    {
+        isStart = true;
+    }
     public void Op_UpdateGameplay()
     {
-
-
-    }
-    private void Update()
-    {
         Pause();
+
     }
+    
     void Pause() 
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -54,7 +55,9 @@ public class GameManager : MonoBehaviour, IOptimizatedUpdate
             return;
         }
     }
- 
+
+    public static bool isStart;
+    
     public void Op_UpdateUX()
     {
     }

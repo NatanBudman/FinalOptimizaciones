@@ -12,8 +12,9 @@ public class SceneChanger : MonoBehaviour, IOptimizatedUpdate
 
     public void Op_UpdateUX()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Return))
         {
+            Debug.Log("cambio");
             SceneManager.LoadScene("SampleScene");
 
         }

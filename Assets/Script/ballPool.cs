@@ -46,9 +46,9 @@ public class ballPool : MonoBehaviour
     }
 
     // Devuelve una bala al pool
-    public void ReturnBallToPool(GameObject bullet)
+    public void ReturnBallToPool(GameObject ball)
     {
-        bullet.SetActive(false);
-        balls.Enqueue(bullet);
+        ball.SetActive(false);
+        balls.Enqueue(ball);
     }
 }

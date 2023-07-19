@@ -1109,7 +1109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1091754146}
   - {fileID: 1661617431}
@@ -1212,7 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 94518094}
   - {fileID: 13092830}
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1160628487}
   - {fileID: 2026061044}
@@ -2081,7 +2081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1160628487}
   - {fileID: 2026061044}
@@ -2112,7 +2112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1785532917}
   - {fileID: 1900679942}
@@ -2210,7 +2210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1650266576}
   - {fileID: 1091754146}
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1160628487}
   - {fileID: 1295125932}
@@ -3022,7 +3022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 805160924}
   - {fileID: 456463691}
@@ -3252,7 +3252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 524083846}
   - {fileID: 372376951}
@@ -3446,9 +3446,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plataform: {fileID: 1954853049}
-  ball: {fileID: 1022782279}
-  bola: {fileID: 1022782283}
-  StartHeightDetectedColliders: 12
+  bola: {fileID: 0}
+  StartHeightDetectedColliders: 10
   power: {fileID: 1690291926}
   Collisions:
   - {fileID: 1832166416}
@@ -3466,10 +3465,13 @@ MonoBehaviour:
   MinHeight: -10
   MaxHorizontal: 38
   MinHorizontal: -46
-  ballPrefab: {fileID: 1022782277}
+  ballPrefab: {fileID: 7456315527000365031, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
   rangeIterationCollision: 20
   ballPool: {fileID: 123029565}
-  multiballPrefab: {fileID: 1690291921}
+  totalLifes: 3
+  multiballPrefab: {fileID: 7456315527000365031, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
+  _ball: {fileID: 0}
+  ballsCount: 0
 --- !u!4 &936316053
 Transform:
   m_ObjectHideFlags: 0
@@ -3919,27 +3921,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3864653771912125655, guid: 186d1b223b3bdaa4fa761b5372ecb33d, type: 3}
   m_PrefabInstance: {fileID: 1390882481}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1022782277 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7456315527000365031, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-  m_PrefabInstance: {fileID: 7456315526409649314}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1022782279 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7456315527000365029, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-  m_PrefabInstance: {fileID: 7456315526409649314}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1022782277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4f035bad252cbf4db60918338ab7b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1022782283 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-  m_PrefabInstance: {fileID: 7456315526409649314}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1048914751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4001,7 +3982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1661617431}
   - {fileID: 592868777}
@@ -4131,7 +4112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1900679942}
   - {fileID: 2032548743}
@@ -4234,7 +4215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 370773283}
   - {fileID: 337405396}
@@ -4258,7 +4239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 225022664}
   - {fileID: 805160924}
@@ -4356,7 +4337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 225022664}
   - {fileID: 805160924}
@@ -4384,7 +4365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 561914717}
   - {fileID: 1148458345}
@@ -4481,7 +4462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1969530905}
   - {fileID: 370773283}
@@ -4579,7 +4560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1148458345}
   - {fileID: 68014746}
@@ -4677,7 +4658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1160628487}
   - {fileID: 1295125932}
@@ -4775,7 +4756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1629718122}
   - {fileID: 69528245}
@@ -4872,7 +4853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 441303764}
   - {fileID: 196980634}
@@ -4896,7 +4877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1160628487}
   - {fileID: 2026061044}
@@ -5001,7 +4982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 869489381}
   - {fileID: 1635936275}
@@ -5098,7 +5079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1438248048}
   - {fileID: 895619120}
@@ -5196,7 +5177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 34645691}
   - {fileID: 292869412}
@@ -5294,7 +5275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 358797809}
   - {fileID: 496705968}
@@ -5318,7 +5299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 456463691}
   - {fileID: 524083846}
@@ -5416,7 +5397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -5521,7 +5502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1849214184}
   - {fileID: 94518094}
@@ -5545,7 +5526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 687011480}
   - {fileID: 441303764}
@@ -5641,7 +5622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 895619120}
   - {fileID: 1969530905}
@@ -5665,7 +5646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1600276439}
   - {fileID: 687011480}
@@ -5689,7 +5670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 292869412}
   - {fileID: 1600276439}
@@ -5713,7 +5694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 869489381}
   - {fileID: 1635936275}
@@ -5747,7 +5728,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 496705968}
   - {fileID: 1785532917}
@@ -5803,7 +5784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 388815030}
   - {fileID: 34645691}
@@ -6131,7 +6112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -6318,7 +6299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 2032548743}
   - {fileID: 2026061044}
@@ -6341,7 +6322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1167554172}
   - {fileID: 1944649643}
@@ -6439,7 +6420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 196980634}
   - {fileID: 1629718122}
@@ -6537,7 +6518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 13092830}
   - {fileID: 358797809}
@@ -6561,7 +6542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 94518094}
@@ -6592,7 +6573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -6697,7 +6678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -6728,7 +6709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 561914717}
   - {fileID: 1148458345}
@@ -6752,7 +6733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1944649643}
   - {fileID: 388815030}
@@ -6817,13 +6798,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 75
+  collisionManager: {fileID: 936316052}
   ScaleY: 6
   ScaleX: 7
---- !u!4 &1954853051 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf9688c5d4589d64090bde5c0a9379e2, type: 3}
-  m_PrefabInstance: {fileID: 631913889}
+--- !u!114 &1954853053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954853048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178c930bd503257438982c6b6619c9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updateManager: {fileID: 879933239}
+  isAddManager: 1
 --- !u!1 &1969530905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3864653771912125655, guid: 186d1b223b3bdaa4fa761b5372ecb33d, type: 3}
@@ -6843,7 +6834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 372376951}
   - {fileID: 1650266576}
@@ -6925,7 +6916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1167554172}
   - {fileID: 1944649643}
@@ -6948,7 +6939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -6979,7 +6970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -7084,7 +7075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1084609561}
   - {fileID: 1811285015}
@@ -7223,7 +7214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 68014746}
   - {fileID: 1438248048}
@@ -7321,7 +7312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 337405396}
   - {fileID: 1054441902}
@@ -7419,7 +7410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 1295125932}
   - {fileID: 1849214184}
@@ -7524,69 +7515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 1
   ScaleY: 3
-  ScaleX: 6
+  ScaleX: 6.5
   Neighboards:
   - {fileID: 592868777}
   - {fileID: 1084609561}
   - {fileID: 1811285015}
---- !u!1001 &7456315526409649314
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1954853051}
-    m_Modifications:
-    - target: {fileID: 7456315527000365031, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_Name
-      value: Bola
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.07799997
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 7.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.1462518
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365033, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7456315527000365038, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
-      propertyPath: _updateManager
-      value: 
-      objectReference: {fileID: 879933239}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b5da7d3ed49cc7f45968bb607aab210a, type: 3}
