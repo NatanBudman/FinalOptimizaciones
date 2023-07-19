@@ -8,7 +8,6 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 {
 
     public Plataform plataform;
-    public Transform bola;
     public int StartHeightDetectedColliders;
     public MultiBall power;
     public List<GameObject> Collisions;
@@ -22,22 +21,18 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
     public int totalLifes = 3;
     private int currentLifes;
     public GameObject multiballPrefab;
-    public Ball _ball;
     public int ballsCount = 0;
     private Dictionary<GameObject, bool> powerUps = new Dictionary<GameObject, bool>();
-    GameObject[] powers;
+    public GameObject[] powers;
+
+
+    GameManager gameManager;
      private void Start()
      {
+        gameManager = FindObjectOfType<GameManager>();
         currentLifes = totalLifes;
         Vector3 playerPosition = new Vector3(plataform.transform.position.x, plataform.transform.position.y + plataform.ScaleY * 0.5f, plataform.transform.position.z);
         LaunchNewBall(playerPosition, plataform.transform);
-         powers = GameObject.FindGameObjectsWithTag("PowerUp");
-        int Lenght =powers.Length;
-        for(int i = 0; i < Lenght; i++)
-        {
-            powerUps.Add(powers[i], false);
-        }
-        
 
     }
     public void isCollisionWithBall(Ball ball) 
@@ -82,7 +77,6 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
     }
     public void CheckPowerUpCollision()
     {
-
         foreach (GameObject powerUp in powers)
         {
             if (powerUps.ContainsKey(powerUp))
@@ -169,27 +163,7 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
         return false;
     }
-    public bool OnCollisionWhitBall( GameObject other)
-    {
-
-        float _selftLowPosx = bola.transform.position.x - (bola.transform.localScale.x * 0.5f);
-        float _selftMuchPosX = bola.transform.position.x + (bola.transform.localScale.x * 0.5f);
-        float _OthertLowPosx = other.transform.position.x - (other.transform.localScale.x * 0.5f);
-        float _OtherMuchPosX = other.transform.position.x + (other.transform.localScale.x * 0.5f);
-
-        float _selftLowPosY = bola.transform.position.y - (bola.transform.localScale.y * 0.5f);
-        float _selftMuchPosY = bola.transform.position.y + (bola.transform.localScale.y * 0.5f);
-        float _OthertLowPosY = other.transform.position.y - (other.transform.localScale.y * 0.5f);
-        float _OtherMuchPosY = other.transform.position.y + (other.transform.localScale.y * 0.5f);
-
-        if (_selftLowPosx <= _OthertLowPosx + other.transform.localScale.x && _selftMuchPosX >= _OthertLowPosx &&
-        _selftLowPosY <= _OthertLowPosY + other.transform.localScale.y && _selftMuchPosY >= _OthertLowPosY)
-        {
-            return true;
-        }
-
-        return false;
-    }
+ 
     public bool OnCheckCollision(GameObject _selft, GameObject other, float _SelfScaleX,float _SelftSacaleY, float _OtherScaleX, float _OtherSacaleY)
     {
 
@@ -331,28 +305,13 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                 currentLifes--;
                 if (currentLifes <= 0)
                 {
-                    SceneManager.LoadScene("Lose");
-                    Debug.Log("alpiste");
+                    gameManager.LoseCondition();
                 }
 
             }
 
         }
-       /* if (_ball.transform.position.y < MinHeight)
-        {
-            Vector3 playerPosition = new Vector3(plataform.transform.position.x, plataform.transform.position.y + plataform.ScaleY * 0.5f, plataform.transform.position.z);
-            _ball.transform.position = playerPosition;
-            _ball.transform.SetParent(plataform.transform);
-            _ball.StopBall();
-            GameManager.isStart = true;
-            currentLifes--;
 
-        }
-        if (currentLifes == 0)
-        {
-            SceneManager.LoadScene("Lose");
-        }
-       */
     }
     public void Op_UpdateGameplay()
     {

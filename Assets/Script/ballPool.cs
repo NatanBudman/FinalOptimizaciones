@@ -10,7 +10,7 @@ public class ballPool : MonoBehaviour
 
     private Queue<GameObject> balls;
 
-    void Start()
+    void Awake()
     {
         balls = new Queue<GameObject>();
 
@@ -26,12 +26,10 @@ public class ballPool : MonoBehaviour
     // Retorna una bala del pool
     public GameObject GetBall()
     {
-        OptimizatedUpdateGameplay update = null;
         if (balls.Count == 0)
         {
 
             GameObject bullet = Instantiate(ballPrefab, transform);
-            update = bullet.GetComponent<OptimizatedUpdateGameplay>();
             bullet.SetActive(false);
             balls.Enqueue(bullet);
         }
@@ -40,7 +38,6 @@ public class ballPool : MonoBehaviour
 
         bulletToReturn.SetActive(true);
 
-        update = bulletToReturn.GetComponent<OptimizatedUpdateGameplay>();
 
         return bulletToReturn;
     }

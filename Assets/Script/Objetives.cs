@@ -12,11 +12,24 @@ public class Objetives : MonoBehaviour
 
     public GameObject[] Neighboards;
 
+    public GameManager gameManager;
+
+   
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
+
     public void DestroyedObjetive() 
     {
         life--;
-        if(life <= 0)
-        gameObject.SetActive(false);
+        if (life <= 0) 
+        {
+            gameObject.SetActive(false);
+            GameManager.CurrentObjetives -= 1;
+            gameManager.VictoryCondition();
+            return;
+        }
     }
 
 }

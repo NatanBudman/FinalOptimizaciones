@@ -38,12 +38,16 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 37f72e404122477488b5f488590caf2b, type: 3}
   - {fileID: 21300000, guid: a148810389117714e98712d95a9c2583, type: 3}
   - {fileID: 21300000, guid: 1f7c12d474d0799439c52c53be3c400d, type: 3}
+  - {fileID: 21300000, guid: 5b1ebe960bee86b49a1e1e1d221b94a2, type: 3}
   - {fileID: 21300000, guid: 4fa4ed587e065664d8c7dc7078280a76, type: 3}
   m_PackedSpriteNamesToIndex:
+  - HD-wallpaper-victoria-with-names-female-names-victoria-name-purple-neon-lights-horizontal-text-with-victoria-name
   - pause screen
   - splash screen
+  - GameoverSMB
   - main menu
   m_RenderDataMap: {}
   m_Tag: ScreensAtlas

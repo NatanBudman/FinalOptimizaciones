@@ -1,37 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IOptimizatedUpdate
 {
     private bool isPause = false;
 
     public Canvas _Canvas;
+    public GameUI GameUI;
+
+    public static int CurrentObjetives;
+    private void Awake()
+    {
+        CurrentObjetives = FindObjectsOfType<Objetives>().Length;
+    }
     public void Start()
     {
+     
         isStart = true;
     }
     public void Op_UpdateGameplay()
     {
         Pause();
 
+        
+    }public void VictoryCondition() 
+    {
+        if (CurrentObjetives <= 0) 
+        {
+            GameUI.Winning();
+         
+            IsPause(true);
+        }
     }
-    
+
+    public void LoseCondition() 
+    {
+        GameUI.LoseGame();
+        IsPause(true);
+    }
     void Pause() 
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isPause && Input.GetKeyDown(KeyCode.Escape)) 
         {
-            if (!isPause)
-            {
-                IsPause(true);
-                return;
-            }
-            else 
-            {
+            SceneManager.LoadScene("Scenes/menu");
+        }
+        if (Input.GetKey(KeyCode.Return) && isPause)
+        {
                 IsPause(false);
                 return;
-            }
-         
+        }
+        if (Input.GetKey(KeyCode.Escape) && !isPause)
+        {
+            IsPause(true);
+            return;
         }
     }
 
