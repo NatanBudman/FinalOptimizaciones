@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     private float Velocity;
     public float DireccionX;
     private float _dirX;
+    [HideInInspector] public ballPool Pool;
 
     [Header("Scale")]
     public float ScaleY;

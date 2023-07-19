@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 {
@@ -10,16 +11,23 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
     public Ball ball;
     public Transform bola;
     public int StartHeightDetectedColliders;
-
+    public MultiBall power;
     public List<GameObject> Collisions;
-
     public float MaxHeight;
     public float MinHeight;
     public float MaxHorizontal;
     public float MinHorizontal;
-
+    public GameObject ballPrefab;
     public float rangeIterationCollision;
     bool isStart = true;
+    public ballPool ballPool;
+    public int totalLifes = 3;
+    private int currentLifes;
+    public GameObject multiballPrefab;
+     private void Start()
+    {
+        currentLifes = totalLifes;
+    }
     private void Walls() 
     {
         // Rebota si no esta en la plataforma
@@ -56,12 +64,14 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
             }
             //Toca Piso
+            /*
             if (ball.transform.position.y < MinHeight)
             {
                 ball.RandomBounce("Up");
                 ball.transform.SetParent(null);
                 return;
             }
+            */
             // Toca Techo
             if (ball.transform.position.y > MaxHeight)
             {
@@ -70,6 +80,35 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                 return;
             }
     }
+    private void CheckPowerUpCollision(GameObject powerUp)
+    {
+        if (OnCheckCollision(plataform.gameObject, powerUp, plataform.ScaleX, plataform.ScaleY, powerUp.GetComponent<Renderer>().bounds.size.x, powerUp.GetComponent<Renderer>().bounds.size.y))
+        {
+            // Verifica si el power-up es el Multiball
+            if (powerUp.CompareTag("PowerUp"))
+            {
+             
+
+                // Destruye el power-up
+                powerUp.SetActive(false);
+                RemoveCollision(powerUp);
+                 // Lanza 2 nuevas pelotas desde la posición del jugador
+                 Vector3 playerPosition = plataform.transform.position;
+                LaunchNewBall(playerPosition);
+                LaunchNewBall(playerPosition);
+
+            }
+        }
+    }
+
+    private void LaunchNewBall(Vector3 position)
+    {
+         GameObject newBall = ballPool.GetBall();
+        newBall.GetComponent<Ball>().Move();
+        newBall.transform.position = position;
+
+    }
+
     private void Plataform() 
     {
         // Plataform
@@ -168,7 +207,7 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
         }
     }
-
+ 
     public void Op_UpdateGameplay()
     {
         if (isStart == false)
@@ -195,7 +234,7 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                     if (OnCheckCollision(bola.gameObject, obj.gameObject,ball.ScaleX,ball.ScaleY, obj.ScaleX, obj.ScaleY))
                     {
 
-
+                   
                         // Si es mayor a la y del padre pica para arriba
                         if (ball.transform.position.y > coll.transform.position.y)
                             ball.BallJump();
@@ -220,11 +259,17 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                 }
 
                 copyColls = Collisions;
+            
+        }
+        GameObject[] powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
+        foreach (GameObject powerUp in powerUps)
+        {
+            CheckPowerUpCollision(powerUp);
+        
         }
 
-
-        if (OnCheckCollision(bola.gameObject, plataform.gameObject,ball.ScaleX,ball.ScaleY,plataform.ScaleX,plataform.ScaleY))
-        {
+            if (OnCheckCollision(bola.gameObject, plataform.gameObject,ball.ScaleX,ball.ScaleY,plataform.ScaleX,plataform.ScaleY))
+            {
 
             //  ball.transform.SetParent(plataform.transform);
             if (isStart)
@@ -243,11 +288,24 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
             }
 
 
-        }
+            }
 
 
         Plataform();
         Walls();
+
+        if (ball.transform.position.y < MinHeight)
+        {
+            Vector3 playerPosition = plataform.transform.position;
+            ball.transform.position = playerPosition;
+            ball.StopBall();
+            currentLifes--;
+
+        }
+        if(currentLifes == 0)
+        {
+            SceneManager.LoadScene("Lose");
+        }
     }
 
     public void Op_UpdateUX()
