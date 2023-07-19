@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 {
+
     public Plataform plataform;
     public Ball ball;
     public Transform bola;
@@ -17,13 +19,10 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
     public float MinHorizontal;
 
     public float rangeIterationCollision;
-    bool isCollisionWhithPlataform = false;
-    bool isStart = false;
+    bool isStart = true;
     private void Walls() 
     {
         // Rebota si no esta en la plataforma
-        if (!isCollisionWhithPlataform)
-        {
 
             if (ball.transform.position.x > MaxHorizontal && ball.transform.position.y < MinHeight)
             {
@@ -38,6 +37,8 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                 ball.transform.SetParent(null);
                 return;
             }
+
+            // Toca izquierda
             if (ball.transform.position.x < MinHorizontal)
             {
                 ball.Bounce("Up", "Right");
@@ -46,6 +47,7 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
 
             }
+        // Toca derecha
             if (ball.transform.position.x > MaxHorizontal) 
             {
                 ball.Bounce("Up", "Left");
@@ -53,21 +55,20 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
                 return;
 
             }
+            //Toca Piso
             if (ball.transform.position.y < MinHeight)
             {
                 ball.RandomBounce("Up");
                 ball.transform.SetParent(null);
                 return;
-
-
             }
+            // Toca Techo
             if (ball.transform.position.y > MaxHeight)
             {
                 ball.RandomBounce("Down");
                 ball.transform.SetParent(null);
                 return;
             }
-        }
     }
     private void Plataform() 
     {
@@ -97,6 +98,27 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
         float _selftLowPosY = _selft.transform.position.y - (_selft.transform.localScale.y * 0.5f);
         float _selftMuchPosY = _selft.transform.position.y + (_selft.transform.localScale.y * 0.5f);
+        float _OthertLowPosY = other.transform.position.y - (other.transform.localScale.y * 0.5f);
+        float _OtherMuchPosY = other.transform.position.y + (other.transform.localScale.y * 0.5f);
+
+        if (_selftLowPosx <= _OthertLowPosx + other.transform.localScale.x && _selftMuchPosX >= _OthertLowPosx &&
+        _selftLowPosY <= _OthertLowPosY + other.transform.localScale.y && _selftMuchPosY >= _OthertLowPosY)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    public bool OnCollisionWhitBall( GameObject other)
+    {
+
+        float _selftLowPosx = bola.transform.position.x - (bola.transform.localScale.x * 0.5f);
+        float _selftMuchPosX = bola.transform.position.x + (bola.transform.localScale.x * 0.5f);
+        float _OthertLowPosx = other.transform.position.x - (other.transform.localScale.x * 0.5f);
+        float _OtherMuchPosX = other.transform.position.x + (other.transform.localScale.x * 0.5f);
+
+        float _selftLowPosY = bola.transform.position.y - (bola.transform.localScale.y * 0.5f);
+        float _selftMuchPosY = bola.transform.position.y + (bola.transform.localScale.y * 0.5f);
         float _OthertLowPosY = other.transform.position.y - (other.transform.localScale.y * 0.5f);
         float _OtherMuchPosY = other.transform.position.y + (other.transform.localScale.y * 0.5f);
 
@@ -149,68 +171,80 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
     public void Op_UpdateGameplay()
     {
+        if (isStart == false)
+        {
+            ball.Move();
+        }
+        else 
+        {
+            ball.StopBall();
+        }
 
-        ball.Move();
 
         // Chequea collisiones cuando pasa determinado valor Y
         if (ball.transform.position.y >= rangeIterationCollision)
         {
+
             List<GameObject> copyColls = new List<GameObject>(Collisions);
-            foreach (var coll in copyColls)
-            {
-                Objetives obj = coll.GetComponent<Objetives>();
 
-                if (OnCheckCollision(bola.gameObject, obj.gameObject,ball.ScaleX,ball.ScaleY, obj.ScaleX, obj.ScaleY))
+                foreach (var coll in copyColls)
                 {
-                    
+                    Objetives obj = coll.GetComponent<Objetives>();
 
-                    // Si es mayor a la y del padre pica para arriba
-                    if (ball.transform.position.y > coll.transform.parent.position.y)
-                        ball.BallJump();
-                    else
-                        ball.RandomBounce("Down");
 
-                    obj.DestroyedObjetive();
-
-                    if (!coll.gameObject.activeInHierarchy)
+                    if (OnCheckCollision(bola.gameObject, obj.gameObject,ball.ScaleX,ball.ScaleY, obj.ScaleX, obj.ScaleY))
                     {
-                        int lenght = obj.Neighboards.Length;
 
-                        for (int i = 0; i < lenght; i++)
+
+                        // Si es mayor a la y del padre pica para arriba
+                        if (ball.transform.position.y > coll.transform.position.y)
+                            ball.BallJump();
+                        else
+                            ball.RandomBounce("Up");
+
+                        obj.DestroyedObjetive();
+
+                        if (!coll.gameObject.activeInHierarchy)
                         {
-                            AddCollision(obj.Neighboards[i]);
+                            int lenght = obj.Neighboards.Length;
+
+                            for (int i = 0; i < lenght; i++)
+                            {
+                                AddCollision(obj.Neighboards[i]);
+                            }
+                            Collisions.Remove(coll);
                         }
-                        Collisions.Remove(coll);
+
                     }
 
                 }
-            }
 
-            copyColls = Collisions;
+                copyColls = Collisions;
         }
-
 
 
         if (OnCheckCollision(bola.gameObject, plataform.gameObject,ball.ScaleX,ball.ScaleY,plataform.ScaleX,plataform.ScaleY))
         {
-            Debug.Log("entre");
 
-            isCollisionWhithPlataform = true;
-            ball.transform.SetParent(plataform.transform);
-
-            if (Input.GetKey(KeyCode.Space))
+            //  ball.transform.SetParent(plataform.transform);
+            if (isStart)
             {
-                ball.transform.SetParent(null);
-                isCollisionWhithPlataform = false;
-                ball.RandomBounce("Up");
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    ball.transform.SetParent(null);
+                    isStart = false;
+                    ball.RandomBounce("Up");
+                }
+               
             }
-            else
+            else 
             {
-                ball.StopBall();
+                ball.RandomBounce("Up");
             }
 
 
         }
+
 
         Plataform();
         Walls();
@@ -218,6 +252,7 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
 
     public void Op_UpdateUX()
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
+
 }

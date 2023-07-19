@@ -76,44 +76,7 @@ public class UpdateManager : MonoBehaviour
 
     }
 
-    /*
-    void Update()
-    {
-        var gameplayLenght = GameplayUpdates.Count;
-        var UXLenght = UXUpdates.Count;
 
-        GameplaynextTime += Time.deltaTime;
-        UInextTime += Time.deltaTime;
-
-        if (GameplaynextTime >= GameplaytimePerFrame)
-        {
-            List<OptimizatedUpdateGameplay> updatesCopy = new List<OptimizatedUpdateGameplay>(GameplayUpdates);
-
-            foreach (var updateGameplay in updatesCopy)
-            {
-                if (updateGameplay != null)
-                {
-                    updateGameplay.UpdateGameplay();
-                }
-            }
-            updatesCopy = GameplayUpdates;
-
-            GameplaynextTime = 0;
-
-        }
-      
-        if (UInextTime >= UItimePerFrame)
-        {
-            for (int i = 0; i < UXLenght; i++)
-            {
-                    UXUpdates[i].UpdateUX();
-            }
-
-            UInextTime = 0;
-        }
-     
-    }
-    */
 
     #region Method
     // Agregar objeto a actualizar a la lista
