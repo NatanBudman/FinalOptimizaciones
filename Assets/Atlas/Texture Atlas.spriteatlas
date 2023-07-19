@@ -32,15 +32,20 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: a6003d5a72372484381497c4f3ef61dc, type: 3}
-    - {fileID: 2800000, guid: 4c7192d39d47cce4c8dcf77a3f6bafac, type: 3}
-    - {fileID: 2800000, guid: 14d7da589737c0140a25f6de9e831da8, type: 3}
+    - {fileID: 102900000, guid: 41fe22a4d617c384c97349d4eb83887f, type: 3}
+    - {fileID: 102900000, guid: f046772519623e54896123c2eb3c9470, type: 3}
+    - {fileID: 102900000, guid: 1f55257761359ed4f9cea9a8bf2d41ba, type: 3}
+    - {fileID: 102900000, guid: 37d0e4944d57adb42982e0fca43d1479, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 93f0799487152b544860bdbd341463fd, type: 3}
+  - {fileID: 21300000, guid: e50fdd5e93900d644be4ba9d1ae18a94, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - contador de pelotas
+  - diseno-de-paisaje-del-espacio_3840x2160_xtrafondos.com
   m_RenderDataMap: {}
   m_Tag: Texture Atlas
   m_IsVariant: 0
