@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Ball : MonoBehaviour, IOptimizatedUpdate
 {
     public float Jump = 10f;
     public float gravityScale = 10f;
     private float Velocity;
     public float DireccionX;
     private float _dirX;
-
+    [HideInInspector] public ballPool Pool;
+     CollisionManager collisionManager;
     [Header("Scale")]
     public float ScaleY;
     public float ScaleX;
@@ -17,6 +18,7 @@ public class Ball : MonoBehaviour
     {
         _dirX = DireccionX;
         StopBall();
+        collisionManager = FindAnyObjectByType<CollisionManager>();
     }
     public void Move() 
     {
@@ -80,5 +82,24 @@ public class Ball : MonoBehaviour
                 Bounce(DirY, "Left");
                 break;
         }
+    }
+
+    public void Op_UpdateGameplay()
+    {
+        if (GameManager.isStart == false )
+        {
+            collisionManager.isCollisionWithBall(this);
+            collisionManager.CheckCollisionWithObjectives(this);
+            Move();
+            collisionManager.LostBall(this);
+        }
+       
+        collisionManager.CheckCollisionWithPlataform(this);
+
+    }
+
+    public void Op_UpdateUX()
+    {
+        throw new System.NotImplementedException();
     }
 }
