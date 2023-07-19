@@ -79,33 +79,30 @@ public class CollisionManager : MonoBehaviour,IOptimizatedUpdate
     {
         foreach (GameObject powerUp in powers)
         {
-            if (powerUps.ContainsKey(powerUp))
+            if(powerUp != null && powerUp.activeInHierarchy)
             {
-                if (powerUps[powerUp] == false)
+                if (OnCheckCollision(plataform.gameObject, powerUp, plataform.ScaleX, plataform.ScaleY, powerUp.gameObject.transform.localScale.x, powerUp.gameObject.transform.localScale.y))
                 {
-                    if (OnCheckCollision(plataform.gameObject, powerUp, plataform.ScaleX, plataform.ScaleY, powerUp.GetComponent<Renderer>().bounds.size.x, powerUp.GetComponent<Renderer>().bounds.size.y))
+
+                    // Verifica si el power-up es el Multiball
+                    if (powerUp.CompareTag("PowerUp"))
                     {
 
-                        // Verifica si el power-up es el Multiball
-                        if (powerUp.CompareTag("PowerUp"))
-                        {
 
-
-                            // Destruye el power-up
-                            powerUp.SetActive(false);
-                            RemoveCollision(powerUp);
-                            // Lanza 2 nuevas pelotas desde la posición del jugador
-                            Vector3 playerPosition = plataform.transform.position;
-                            LaunchNewBall(playerPosition);
-                            LaunchNewBall(playerPosition);
-                            powerUps[powerUp] = true;
-                        }
+                        // Destruye el power-up
+                        powerUp.SetActive(false);
+                        RemoveCollision(powerUp);
+                        // Lanza 2 nuevas pelotas desde la posición del jugador
+                        Vector3 playerPosition = plataform.transform.position;
+                        LaunchNewBall(playerPosition);
+                        LaunchNewBall(playerPosition);
+                        powerUps[powerUp] = true;
                     }
-
                 }
-
             }
-          
+                    
+
+                
         }
     }
 
